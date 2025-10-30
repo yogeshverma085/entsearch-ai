@@ -31,7 +31,7 @@ export default function Chat() {
       // const res = await api.post("/sec-query", { query: text });
 
       //-----------------------finance-search----------------------------------------------
-      // const res = await api.post("/api/ai-finance", { query: text });
+      const res = await api.post("/api/ai-finance", { query: text });
 
       //-----------------------news-api----------------------------------------------
       // const res = await api.post("/api/news-ai", { query: text });
@@ -46,20 +46,18 @@ export default function Chat() {
       // });
 
       //-----------------------sharepoint-search----------------------------------------------
-      const token = import.meta.env.TOKEN;
-
-      const res = await api.post(
-        "/sharepoint-query",
-        {
-          query: "what is usecase of azure ai foundry?",
-          urls: ["https://learn.microsoft.com/en-us/azure/ai-services/what-are-ai-services"],
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      // const token = import.meta.env.TOKEN;
+      // const res = await api.post(
+      //   "/sharepoint-query",
+      //   {
+      //     query: text, // body
+      //   },
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${token}`, // headers
+      //     },
+      //   }
+      // );
 
       setMessages((prev) => [...prev, { sender: "bot", text: res.data.answer }]);
     } catch (err) {
